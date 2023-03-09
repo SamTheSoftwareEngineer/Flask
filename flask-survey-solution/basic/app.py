@@ -1,4 +1,3 @@
-# Need to import neccesary packages and the satisifaction survey from another file
 from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import satisfaction_survey as survey
@@ -9,16 +8,16 @@ from surveys import satisfaction_survey as survey
 RESPONSES_KEY = "responses"
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "survery-app!"
+app.config['SECRET_KEY'] = "never-tell!"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 
-# Make a route for the home apge which allows user to select a survey
+
 @app.route("/")
 def show_survey_start():
     """Select a survey."""
-# Return the template for the HTML, insert given variable
+
     return render_template("survey_start.html", survey=survey)
 
 
