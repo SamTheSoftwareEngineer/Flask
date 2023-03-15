@@ -5,7 +5,7 @@ import string
 
 
 class Boggle():
-
+# Initalize a boggle class and assign the words to be all the words in the read dictionary 
     def __init__(self):
 
         self.words = self.read_dict("words.txt")

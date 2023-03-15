@@ -1,4 +1,4 @@
-# Need to import neccesary packages and the satisifaction survey from another file
+# Need to import neccesary packages and the satisifaction survey from the appropriate file(s)
 from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import satisfaction_survey as survey
@@ -14,20 +14,20 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 
-# Make a route for the home apge which allows user to select a survey
+# Make a route for the home page which allows user to select a survey
 @app.route("/")
 def show_survey_start():
     """Select a survey."""
-# Return the template for the HTML, insert given variable
+# Return the template for the HTML, refer to the given variable from the html file referenced
     return render_template("survey_start.html", survey=survey)
 
-
+# Make a post request to the begin route and clear the survey of any responses 
 @app.route("/begin", methods=["POST"])
 def start_survey():
     """Clear the session of responses."""
-
+# Initiate a empty array to store responses from this session
     session[RESPONSES_KEY] = []
-
+# Redirect the user to the first question on whatever is on the questions route 
     return redirect("/questions/0")
 
 
@@ -50,7 +50,7 @@ def handle_question():
     else:
         return redirect(f"/questions/{len(responses)}")
 
-
+# Defines the questions route that accepts an integer which is the question number 
 @app.route("/questions/<int:qid>")
 def show_question(qid):
     """Display current question."""

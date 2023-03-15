@@ -1,6 +1,6 @@
 class Question:
     """Question on a questionnaire."""
-
+# Initize the question class with these inputs 
     def __init__(self, question, choices=None, allow_text=False):
         """Create question (assume Yes/No for choices."""
 
